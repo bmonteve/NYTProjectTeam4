@@ -37,11 +37,13 @@
                 <label for="endYearInput">End Year (Optional)</label>
                 <input type="text" class="form-control" id="endYearInput">
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary" id="searchArticles">Search</button>
             <button class="btn btn-danger">Clear Results</button>
         </form>
 
         <div class="content">
+
+            
 
         </div>
     </div>
@@ -49,8 +51,11 @@
 
 
     <!-- Optional JavaScript -->
-    <script>
-        
+    <script type="text/JavaScript">
+        $("#searchArticles").on("click", function() {
+            
+
+        });
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
