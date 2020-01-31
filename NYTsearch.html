@@ -37,7 +37,7 @@
                 <label for="endYearInput">End Year (Optional)</label>
                 <input type="text" class="form-control" id="endYearInput">
             </div>
-            <button type="submit" class="btn btn-primary" id="searchArticles">Search</button>
+            <button type = "submit" class="btn btn-primary" id="searchArticles">Search</button>
             <button class="btn btn-danger">Clear Results</button>
         </form>
 
@@ -52,11 +52,28 @@
 
     <!-- Optional JavaScript -->
     <script type="text/JavaScript">
-        $("#searchArticles").on("click", function() {
-            
+        $("#searchArticles").on("submit", function(event) {
+            event.preventDefault();
+            var term = $("#searchInput").val();
+            var number = parseInt($("#numbersInput"));
+            var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + term + "&api-key=bqlEF6hzMly2Mb9QGULvqc7AXYAk6r92";
+    
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+    }).then(function (article){
+        for (index = 0; index < number; index++){
+        totalArt.push(article.response.docs[index].headline.print_headline);
+        var art = $("<div>");
+        art.text(totalArt[0]);
+        $(".content").append(art);
+    }
 
+    });
         });
     </script>
+
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
